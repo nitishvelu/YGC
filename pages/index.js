@@ -23,10 +23,12 @@ export async function getServerSideProps({req}) {
     return{
       redirect:{
         destination: '/api/auth/signin',
+        permanent: false,
       }
     }
   }
+  console.log(session)
   return {
-    props: { session },
+    props: {session,}
   }
 }
