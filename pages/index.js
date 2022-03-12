@@ -19,6 +19,13 @@ export default function Component({session}) {
 
 export async function getServerSideProps({req}) {
   const session = await getSession({req})
+  if(!session) {
+    return{
+      redirect:{
+        destination: '/api/auth/signin',
+      }
+    }
+  }
   return {
     props: { session },
   }
