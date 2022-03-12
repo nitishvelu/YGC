@@ -10,4 +10,6 @@ export default NextAuth({
     }),
     // ...add more providers here
   ],
+  database: process.env.DATABASE_URL
+
 })
