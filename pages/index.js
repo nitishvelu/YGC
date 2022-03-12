@@ -1,7 +1,6 @@
-import { useSession, signIn, signOut } from "next-auth/react"
+import { getSession, signIn, signOut } from "next-auth/react"
 
-export default function Component() {
-  const { data: session } = useSession()
+export default function Component({session}) {
   if (session) {
     return (
       <>
@@ -16,4 +15,11 @@ export default function Component() {
       <button onClick={() => signIn()}>Sign in</button>
     </>
   )
+}
+
+export async function getServerSideProps({req}) {
+  const session = await getSession({req})
+  return {
+    props: { session },
+  }
 }
