@@ -3,6 +3,9 @@ import GoogleProvider from "next-auth/providers/google"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { PrismaClient } from "@prisma/client"
 
+const prisma = new PrismaClient()
+
+
 export default NextAuth({
   // Configure one or more authentication providers
   providers: [
@@ -12,6 +15,7 @@ export default NextAuth({
     }),
     // ...add more providers here
   ],
-  database: process.env.DATABASE_URL
+  database: process.env.DATABASE_URL,
+  adapter: PrismaAdapter(prisma)
 
 })
