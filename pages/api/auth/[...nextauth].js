@@ -26,6 +26,11 @@ export default NextAuth({
       signingKey: process.env.JWT_SIGNING_KEY,
   },
   database: process.env.DATABASE_URL,
-  adapter: PrismaAdapter(prisma)
+  adapter: PrismaAdapter(prisma),
+  theme: {
+    colorScheme: "lights", // "auto" | "dark" | "light"
+    brandColor: "", // Hex color code
+    logo: "" // Absolute URL to image
+  }
 
 })

@@ -1,17 +1,12 @@
-import { SessionProvider } from "next-auth/react"
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react';
+import Auth from '../components/Auth';
 
-
-
-export default function App({
-  Component,
-  pageProps: { session, ...pageProps },
-}) {
+function MyApp({ Component, pageProps, session }) {
   return (
-    <SessionProvider session={session}>
-      <ChakraProvider resetCSS>
-      <Component {...pageProps} />
-      </ChakraProvider>
-    </SessionProvider>
-  )
+    <ChakraProvider>
+      <Auth {...pageProps} session={session} Component={Component} />
+    </ChakraProvider>
+  );
 }
+
+export default MyApp;
