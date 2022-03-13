@@ -1,5 +1,7 @@
-import '../styles/globals.css'
 import { SessionProvider } from "next-auth/react"
+import { ChakraProvider } from '@chakra-ui/react'
+
+
 
 export default function App({
   Component,
@@ -7,7 +9,9 @@ export default function App({
 }) {
   return (
     <SessionProvider session={session}>
+      <ChakraProvider resetCSS>
       <Component {...pageProps} />
+      </ChakraProvider>
     </SessionProvider>
   )
 }
