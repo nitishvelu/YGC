@@ -7,6 +7,7 @@ import {
   Textarea,
   Box,
   Button,
+  Center,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -40,7 +41,17 @@ export default function PostForm() {
 
   return (
     <Flex flexDir="column" w="100vw" alignItems={"center"}>
-      <Box mx="4" my="2" px="2" py="1" w="50vw" justifyContent={"center"}>
+      <Box
+        mx="25 "
+        my="2"
+        px="10"
+        py="10"
+        w="40vw"
+        rounded="lg"
+        shadow={"lg"}
+        justifyContent={"center"}
+        bg="gray.50"
+      >
         <form onSubmit={formik.handleSubmit}>
           <FormControl
             mb="4"
@@ -53,6 +64,7 @@ export default function PostForm() {
               value={formik.values.title}
               onChange={formik.handleChange}
               type="title"
+              focusBorderColor="green.300"
             />
             <FormErrorMessage>
               {formik.touched?.title && formik?.errors?.title}
@@ -67,16 +79,18 @@ export default function PostForm() {
               onBlur={formik.handleBlur}
               value={formik.values.body}
               onChange={formik.handleChange}
+              focusBorderColor="green.300"
               type="body"
             />
             <FormErrorMessage>
               {formik.touched?.body && formik?.errors?.body}
             </FormErrorMessage>
           </FormControl>
-
-          <Button type="submit" color="green.400" mt="4">
-            Submit
-          </Button>
+          <Center>
+            <Button type="submit" color="green.400" mt="4">
+              Submit
+            </Button>
+          </Center>
         </form>
       </Box>
     </Flex>
