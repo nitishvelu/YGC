@@ -1,7 +1,7 @@
-import { getSession } from 'next-auth/client';
-import prisma from '../../prisma';
+import { getSession } from "next-auth/client";
+import prisma from "../../prisma";
 
-import { PostSchema } from '../../components/PostForm';
+import { PostSchema } from "../../components/PostForm";
 
 async function createPost(req, res) {
   const session = await getSession({ req });
@@ -21,7 +21,7 @@ async function createPost(req, res) {
   const valid = await PostSchema.isValid(req.body);
 
   if (!valid) {
-    return res.status(500).json({ error: 'validation error' });
+    return res.status(500).json({ error: "validation error" });
   }
 
   const post = await prisma.post.create({
@@ -35,12 +35,12 @@ async function createPost(req, res) {
   if (post.id) {
     res.status(200).json(post);
   } else {
-    return res.status(500).json({ error: 'something went wrong' });
+    return res.status(500).json({ error: "something went wrong" });
   }
 }
 
 export default function handler(req, res) {
-  if (req.method === 'POST') {
+  if (req.method === "POST") {
     return createPost(req, res);
   }
 }

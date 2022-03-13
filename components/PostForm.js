@@ -7,23 +7,23 @@ import {
   Textarea,
   Box,
   Button,
-} from '@chakra-ui/react';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
+} from "@chakra-ui/react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 export const PostSchema = Yup.object().shape({
-  title: Yup.string().required('* Required'),
-  body: Yup.string().required('* Required'),
+  title: Yup.string().required("* Required"),
+  body: Yup.string().required("* Required"),
 });
 
 export default function PostForm() {
   const formik = useFormik({
-    initialValues: { title: '', body: '' },
+    initialValues: { title: "", body: "" },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
-      const data = await fetch('/api/posts', {
-        method: 'POST',
+      const data = await fetch("/api/posts", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(values),
       }).then((res) => res.json());
@@ -45,7 +45,8 @@ export default function PostForm() {
           <FormControl
             mb="4"
             id="title"
-            isInvalid={formik.touched?.title && formik?.errors?.title}>
+            isInvalid={formik.touched?.title && formik?.errors?.title}
+          >
             <FormLabel>Title</FormLabel>
             <Input
               onBlur={formik.handleBlur}
@@ -59,7 +60,8 @@ export default function PostForm() {
           </FormControl>
           <FormControl
             id="body"
-            isInvalid={formik.touched?.body && formik?.errors?.body}>
+            isInvalid={formik.touched?.body && formik?.errors?.body}
+          >
             <FormLabel>Body</FormLabel>
             <Textarea
               onBlur={formik.handleBlur}

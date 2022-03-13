@@ -1,8 +1,8 @@
-import React from 'react';
-import { Flex } from '@chakra-ui/react';
-import Nav from './Nav';
-import { useSession } from 'next-auth/client';
-import { useRouter } from 'next/router';
+import React from "react";
+import { Flex } from "@chakra-ui/react";
+import Nav from "./Nav";
+import { useSession } from "next-auth/client";
+import { useRouter } from "next/router";
 
 export default function Auth({ Component, pageProps }) {
   const [session, loading] = useSession();
@@ -13,7 +13,7 @@ export default function Auth({ Component, pageProps }) {
   }
 
   if (!session) {
-    router.push('/api/auth/signin');
+    router.push("/api/auth/signin");
     return null;
   }
 

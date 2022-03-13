@@ -1,5 +1,5 @@
-import { ChakraProvider } from '@chakra-ui/react';
-import Auth from '../components/Auth';
+import { ChakraProvider } from "@chakra-ui/react";
+import Auth from "../components/Auth";
 
 function MyApp({ Component, pageProps, session }) {
   return (
