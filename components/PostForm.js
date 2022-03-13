@@ -46,7 +46,7 @@ export default function PostForm() {
         my="2"
         px="10"
         py="10"
-        w="40vw"
+        w={["90vw", "100vw", "40vw"]}
         rounded="lg"
         shadow={"lg"}
         justifyContent={"center"}
