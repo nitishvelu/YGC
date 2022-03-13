@@ -40,7 +40,7 @@ export default function PostForm() {
 
   return (
     <Flex flexDir="column" w="100vw" alignItems={"center"}>
-      <Box mx="4" my="2" px="2" py="1" w="50vw">
+      <Box mx="4" my="2" px="2" py="1" w="50vw" justifyContent={"center"}>
         <form onSubmit={formik.handleSubmit}>
           <FormControl
             mb="4"
