@@ -58,7 +58,12 @@ export default function PostForm() {
             id="title"
             isInvalid={formik.touched?.title && formik?.errors?.title}
           >
-            <FormLabel>Title</FormLabel>
+            <Box display={"inline-block"}>
+              <FormLabel display={"inline"}>Title</FormLabel>
+              <FormErrorMessage display={"inline"} fontSize="xs">
+                {formik.touched?.title && formik?.errors?.title}
+              </FormErrorMessage>
+            </Box>
             <Input
               onBlur={formik.handleBlur}
               value={formik.values.title}
@@ -66,9 +71,6 @@ export default function PostForm() {
               type="title"
               focusBorderColor="green.300"
             />
-            <FormErrorMessage>
-              {formik.touched?.title && formik?.errors?.title}
-            </FormErrorMessage>
           </FormControl>
           <FormControl
             id="body"
