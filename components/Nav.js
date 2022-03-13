@@ -8,7 +8,7 @@ export default function Nav() {
       <Heading>
         Velu
         <Text as={"span"} fontSize="lg" color={"green.400"}>
-          {" "}
+          {"   "}
           Lends
         </Text>
       </Heading>

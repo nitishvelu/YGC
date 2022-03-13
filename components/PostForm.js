@@ -39,8 +39,8 @@ export default function PostForm() {
   });
 
   return (
-    <Flex flexDir="column">
-      <Box mx="4" my="2" px="2" py="1">
+    <Flex flexDir="column" w="100vw" alignItems={"center"}>
+      <Box mx="4" my="2" px="2" py="1" w="50vw">
         <form onSubmit={formik.handleSubmit}>
           <FormControl
             mb="4"
@@ -74,7 +74,7 @@ export default function PostForm() {
             </FormErrorMessage>
           </FormControl>
 
-          <Button type="submit" colorScheme="blue" mt="4">
+          <Button type="submit" color="green.400" mt="4">
             Submit
           </Button>
         </form>
