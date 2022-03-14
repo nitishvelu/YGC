@@ -23,7 +23,6 @@ async function createPost(req, res) {
   if (!valid) {
     return res.status(500).json({ error: "validation error" });
   }
-
   const post = await prisma.post.create({
     data: {
       userId: user.id,
