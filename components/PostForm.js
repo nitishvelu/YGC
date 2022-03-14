@@ -4,7 +4,6 @@ import {
   FormLabel,
   FormErrorMessage,
   Input,
-  Textarea,
   Box,
   Button,
   Center,
@@ -13,13 +12,15 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 export const PostSchema = Yup.object().shape({
-  title: Yup.string().required("* Required"),
-  body: Yup.string().required("* Required"),
+  name: Yup.string().required("* Required"),
+  phone: Yup.number().required("* Required"),
+  tenure: Yup.number().required("* Required"),
+  amount: Yup.number().required("* Required"),
 });
 
 export default function PostForm() {
   const formik = useFormik({
-    initialValues: { title: "", body: "" },
+    initialValues: { name: "", phone: null, tenure: null, amount: null },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       const data = await fetch("/api/posts", {
         method: "POST",
@@ -55,39 +56,84 @@ export default function PostForm() {
         <form onSubmit={formik.handleSubmit}>
           <FormControl
             mb="4"
-            id="title"
-            isInvalid={formik.touched?.title && formik?.errors?.title}
+            id="name"
+            isInvalid={formik.touched?.name && formik?.errors?.name}
           >
             <Box display={"inline-block"}>
-              <FormLabel display={"inline"}>Title</FormLabel>
+              <FormLabel display={"inline"}>Name</FormLabel>
               <FormErrorMessage display={"inline"} fontSize="xs">
-                {formik.touched?.title && formik?.errors?.title}
+                {formik.touched?.name && formik?.errors?.name}
               </FormErrorMessage>
             </Box>
             <Input
               onBlur={formik.handleBlur}
-              value={formik.values.title}
+              value={formik.values.name}
               onChange={formik.handleChange}
-              type="title"
+              type="name"
               focusBorderColor="green.300"
             />
           </FormControl>
+
           <FormControl
-            id="body"
-            isInvalid={formik.touched?.body && formik?.errors?.body}
+            mb="4"
+            id="phone"
+            isInvalid={formik.touched?.phone && formik?.errors?.phone}
           >
-            <FormLabel>Body</FormLabel>
-            <Textarea
+            <Box display={"inline-block"}>
+              <FormLabel display={"inline"}>Phone No</FormLabel>
+              <FormErrorMessage display={"inline"} fontSize="xs">
+                {formik.touched?.phone && formik?.errors?.phone}
+              </FormErrorMessage>
+            </Box>
+            <Input
               onBlur={formik.handleBlur}
-              value={formik.values.body}
+              value={formik.values.phone}
               onChange={formik.handleChange}
+              type="phone"
               focusBorderColor="green.300"
-              type="body"
             />
-            <FormErrorMessage>
-              {formik.touched?.body && formik?.errors?.body}
-            </FormErrorMessage>
           </FormControl>
+
+          <FormControl
+            mb="4"
+            id="tenure"
+            isInvalid={formik.touched?.tenure && formik?.errors?.tenure}
+          >
+            <Box display={"inline-block"}>
+              <FormLabel display={"inline"}>Tenure</FormLabel>
+              <FormErrorMessage display={"inline"} fontSize="xs">
+                {formik.touched?.tenure && formik?.errors?.tenure}
+              </FormErrorMessage>
+            </Box>
+            <Input
+              onBlur={formik.handleBlur}
+              value={formik.values.tenure}
+              onChange={formik.handleChange}
+              type="tenure"
+              focusBorderColor="green.300"
+            />
+          </FormControl>
+
+          <FormControl
+            mb="4"
+            id="amount"
+            isInvalid={formik.touched?.amount && formik?.errors?.amount}
+          >
+            <Box display={"inline-block"}>
+              <FormLabel display={"inline"}>amount</FormLabel>
+              <FormErrorMessage display={"inline"} fontSize="xs">
+                {formik.touched?.amount && formik?.errors?.amount}
+              </FormErrorMessage>
+            </Box>
+            <Input
+              onBlur={formik.handleBlur}
+              value={formik.values.amount}
+              onChange={formik.handleChange}
+              type="amount"
+              focusBorderColor="green.300"
+            />
+          </FormControl>
+
           <Center>
             <Button type="submit" color="green.400" mt="4">
               Submit
