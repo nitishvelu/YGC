@@ -63,8 +63,12 @@ model VerificationRequest {
 
 model Post {
   id    String @id @default(cuid())
-  title String
-  body  String
+  name  String
+  phone Int
+  tenure Int
+  amount Int
+  paid Int
+
 
   userId    String
   user      User     @relation(fields: [userId], references: [id])
