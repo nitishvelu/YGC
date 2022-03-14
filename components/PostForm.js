@@ -7,13 +7,19 @@ import {
   Box,
   Button,
   Center,
+  InputLeftAddon,
+  InputGroup,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 export const PostSchema = Yup.object().shape({
   name: Yup.string().required("* Required"),
-  phone: Yup.string().required("* Required"),
+  phone: Yup.string()
+    .matches(/^[0-9]+$/, "Phone must be a number")
+    .min(10, "Must be exactly 10 digits")
+    .max(10, "Must be exactly 10 digits")
+    .required("* Required"),
   tenure: Yup.number().required("* Required"),
   amount: Yup.number().required("* Required"),
 });
@@ -85,13 +91,16 @@ export default function PostForm() {
                 {formik.touched?.phone && formik?.errors?.phone}
               </FormErrorMessage>
             </Box>
-            <Input
-              onBlur={formik.handleBlur}
-              value={formik.values.phone}
-              onChange={formik.handleChange}
-              type="phone"
-              focusBorderColor="green.300"
-            />
+            <InputGroup>
+              <InputLeftAddon children="+91" />
+              <Input
+                onBlur={formik.handleBlur}
+                value={formik.values.phone}
+                onChange={formik.handleChange}
+                type="phone"
+                focusBorderColor="green.300"
+              />
+            </InputGroup>
           </FormControl>
 
           <FormControl
@@ -105,6 +114,7 @@ export default function PostForm() {
                 {formik.touched?.tenure && formik?.errors?.tenure}
               </FormErrorMessage>
             </Box>
+
             <Input
               onBlur={formik.handleBlur}
               value={formik.values.tenure}
@@ -120,18 +130,21 @@ export default function PostForm() {
             isInvalid={formik.touched?.amount && formik?.errors?.amount}
           >
             <Box display={"inline-block"}>
-              <FormLabel display={"inline"}>amount</FormLabel>
+              <FormLabel display={"inline"}>Amount</FormLabel>
               <FormErrorMessage display={"inline"} fontSize="xs">
                 {formik.touched?.amount && formik?.errors?.amount}
               </FormErrorMessage>
             </Box>
-            <Input
-              onBlur={formik.handleBlur}
-              value={formik.values.amount}
-              onChange={formik.handleChange}
-              type="amount"
-              focusBorderColor="green.300"
-            />
+            <InputGroup>
+              <InputLeftAddon children="₹" />
+              <Input
+                onBlur={formik.handleBlur}
+                value={formik.values.amount}
+                onChange={formik.handleChange}
+                type="amount"
+                focusBorderColor="green.300"
+              />
+            </InputGroup>
           </FormControl>
 
           <Center>
