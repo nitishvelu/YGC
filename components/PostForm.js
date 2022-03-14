@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useRouter } from "next/router";
 
 export const PostSchema = Yup.object().shape({
   name: Yup.string().required("* Required"),
@@ -25,6 +26,7 @@ export const PostSchema = Yup.object().shape({
 });
 
 export default function PostForm() {
+  const router = useRouter();
   const formik = useFormik({
     initialValues: { name: "", phone: "", tenure: "", amount: "" },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
@@ -40,6 +42,7 @@ export default function PostForm() {
 
       if (data?.id) {
         resetForm();
+        router.push("/");
       }
     },
     validationSchema: PostSchema,
