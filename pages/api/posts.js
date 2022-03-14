@@ -28,8 +28,8 @@ async function createPost(req, res) {
     data: {
       userId: user.id,
       name: req.body.name,
-      tenure: req.body.tenure,
-      amount: req.body.amount,
+      tenure: Number(req.body.tenure),
+      amount: Number(req.body.amount),
       phone: req.body.phone,
     },
   });

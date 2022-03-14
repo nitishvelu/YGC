@@ -13,14 +13,14 @@ import * as Yup from "yup";
 
 export const PostSchema = Yup.object().shape({
   name: Yup.string().required("* Required"),
-  phone: Yup.number().required("* Required"),
+  phone: Yup.string().required("* Required"),
   tenure: Yup.number().required("* Required"),
   amount: Yup.number().required("* Required"),
 });
 
 export default function PostForm() {
   const formik = useFormik({
-    initialValues: { name: "", phone: null, tenure: null, amount: null },
+    initialValues: { name: "", phone: "", tenure: "", amount: "" },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       const data = await fetch("/api/posts", {
         method: "POST",

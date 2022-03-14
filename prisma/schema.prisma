@@ -64,7 +64,7 @@ model VerificationRequest {
 model Post {
   id    String @id @default(cuid())
   name  String
-  phone Int
+  phone String
   tenure Int
   amount Int
   paid Int @default(0)
