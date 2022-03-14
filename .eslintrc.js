@@ -4,5 +4,8 @@
     "browser": true,
     "node": true,
     "commonjs": true
+  },
+  "rules": {
+    "react/prop-types": 0
   }
 }
