@@ -67,7 +67,7 @@ model Post {
   phone Int
   tenure Int
   amount Int
-  paid Int
+  paid Int @default(0)
 
 
   userId    String

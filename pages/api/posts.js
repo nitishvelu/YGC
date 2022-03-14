@@ -27,8 +27,10 @@ async function createPost(req, res) {
   const post = await prisma.post.create({
     data: {
       userId: user.id,
-      title: req.body.title,
-      body: req.body.body,
+      name: req.body.name,
+      tenure: req.body.tenure,
+      amount: req.body.amount,
+      phone: req.body.phone,
     },
   });
 
