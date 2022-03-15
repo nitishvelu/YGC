@@ -4,7 +4,6 @@ import prisma from "../prisma";
 
 export default function Index({ Loans }) {
   const router = useRouter();
-  console.log(Loans);
 
   return (
     <Flex flexDir="column" w="100vw" alignItems={"center"}>
@@ -28,6 +27,7 @@ export default function Index({ Loans }) {
             onClick={() => router.push("/loan")}
             color="white"
             bg="green.300"
+            colorScheme="green"
             display={"inline"}
             shadow="base"
           >
@@ -49,7 +49,6 @@ export default function Index({ Loans }) {
 
 export async function getStaticProps() {
   const Loans = await prisma.post.findMany();
-  console.log(Loans);
   Loans?.map((x) => {
     x.createdAt = Math.floor(x.createdAt / 1000);
     x.updatedAt = Math.floor(x.updateddAt / 1000);

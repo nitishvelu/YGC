@@ -13,7 +13,6 @@ import {
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
-import { useState } from "react";
 
 export const PostSchema = Yup.object().shape({
   name: Yup.string().required("* Required"),
