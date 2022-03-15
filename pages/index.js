@@ -33,8 +33,11 @@ export default function Index({ Loans }) {
           </Button>
         </Box>
         <ul>
-          {Loans?.map((post) => (
-            <li key={post.id}>{post.name}</li>
+          {Loans?.map((person) => (
+            <Box key={person.id}>
+              <li>{person.name}</li>
+              <li>{person.tenure}</li>
+            </Box>
           ))}
         </ul>
       </Box>
