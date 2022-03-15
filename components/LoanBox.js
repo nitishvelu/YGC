@@ -9,8 +9,8 @@ function LoanBox({ name, amount, tenure, phone }) {
       templateRows="repeat(4, 1fr)"
       templateColumns="repeat(6, 1fr)"
       gap={1}
-      //   minWidth={0}
-      //   minHeight={0}
+      rounded="lg"
+      bg="white"
     >
       <GridItem rowSpan={2} colSpan={3}>
         <Text minWidth={0} minHeight={0}>
