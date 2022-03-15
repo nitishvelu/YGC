@@ -13,6 +13,7 @@ import {
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 export const PostSchema = Yup.object().shape({
   name: Yup.string().required("* Required"),
@@ -151,7 +152,15 @@ export default function PostForm() {
           </FormControl>
 
           <Center>
-            <Button type="submit" color="green.400" mt="4">
+            <Button
+              isLoading={formik.isSubmitting}
+              type="submit"
+              color="white"
+              bgColor="green.300"
+              colorScheme={"green"}
+              loadingText="Submitting"
+              mt="4"
+            >
               Submit
             </Button>
           </Center>

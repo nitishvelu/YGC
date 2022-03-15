@@ -26,8 +26,10 @@ export default function Index({ Loans }) {
           </Heading>
           <Button
             onClick={() => router.push("/loan")}
-            colorScheme={"green"}
+            color="white"
+            bg="green.300"
             display={"inline"}
+            shadow="base"
           >
             New +
           </Button>
