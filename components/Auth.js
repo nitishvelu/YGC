@@ -4,7 +4,7 @@ import Nav from "./Nav";
 import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 
-export default function Auth({ Component, pageProps }) {
+export default function Auth({ Component, ...pageProps }) {
   const [session, loading] = useSession();
   const router = useRouter();
 

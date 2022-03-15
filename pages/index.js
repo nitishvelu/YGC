@@ -1,8 +1,10 @@
 import { Flex, Box, Heading, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import prisma from "../prisma";
 
-export default function Page() {
+export default function Index({ Loans }) {
   const router = useRouter();
+  console.log(Loans);
 
   return (
     <Flex flexDir="column" w="100vw" alignItems={"center"}>
@@ -30,7 +32,25 @@ export default function Page() {
             New +
           </Button>
         </Box>
+        <ul>
+          {Loans?.map((post) => (
+            <li key={post.id}>{post.name}</li>
+          ))}
+        </ul>
       </Box>
     </Flex>
   );
+}
+
+export async function getStaticProps() {
+  const Loans = await prisma.post.findMany();
+  console.log(Loans);
+  Loans?.map((x) => {
+    x.createdAt = Math.floor(x.createdAt / 1000);
+    x.updatedAt = Math.floor(x.updateddAt / 1000);
+    return x;
+  });
+  return {
+    props: { Loans },
+  };
 }
