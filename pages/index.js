@@ -1,5 +1,6 @@
-import { Flex, Box, Heading, Button } from "@chakra-ui/react";
+import { Flex, Box, Heading, Button, VStack } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import LoanBox from "../components/LoanBox";
 import prisma from "../prisma";
 
 export default function Index({ Loans }) {
@@ -34,14 +35,17 @@ export default function Index({ Loans }) {
             New +
           </Button>
         </Box>
-        <ul>
+        <VStack h="70vh" spacing={3} overflowY="auto">
           {Loans?.map((person) => (
-            <Box key={person.id}>
-              <li>{person.name}</li>
-              <li>{person.tenure}</li>
-            </Box>
+            <LoanBox
+              name={person.name}
+              amount={person.amount}
+              tenure={person.tenure}
+              phone={person.phone}
+              key={person.id}
+            />
           ))}
-        </ul>
+        </VStack>
       </Box>
     </Flex>
   );
