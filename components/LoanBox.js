@@ -1,36 +1,37 @@
 import React from "react";
-import { Grid, GridItem, Text } from "@chakra-ui/react";
+import { Grid, GridItem, Heading } from "@chakra-ui/react";
 
 function LoanBox({ name, amount, tenure, phone }) {
+  var formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "INR",
+  });
+
+  formatter.format(2500);
   return (
     <Grid
-      h="10vh"
+      h="25vh"
       w="full"
       templateRows="repeat(4, 1fr)"
       templateColumns="repeat(6, 1fr)"
       gap={1}
       rounded="lg"
       bg="white"
+      p={4}
     >
       <GridItem rowSpan={2} colSpan={3}>
-        <Text minWidth={0} minHeight={0}>
-          {name}
-        </Text>
+        <Heading size={"md"}>{name}</Heading>
       </GridItem>
       <GridItem rowSpan={2} colSpan={3}>
-        <Text minWidth={0} minHeight={0}>
-          {amount}
-        </Text>
+        <Heading size={"md"} color={"green.400"}>
+          {formatter.format(amount)}
+        </Heading>
       </GridItem>{" "}
       <GridItem rowSpan={2} colSpan={3}>
-        <Text minWidth={0} minHeight={0}>
-          {tenure}
-        </Text>{" "}
+        <Heading size={"xs"}>{tenure}</Heading>{" "}
       </GridItem>{" "}
       <GridItem rowSpan={2} colSpan={3}>
-        <Text minWidth={0} minHeight={0}>
-          {phone}
-        </Text>{" "}
+        <Heading size={"xs"}>{phone}</Heading>{" "}
       </GridItem>
     </Grid>
   );

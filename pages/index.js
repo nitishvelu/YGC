@@ -9,8 +9,8 @@ export default function Index({ Loans }) {
   return (
     <Flex flexDir="column" w="100vw" alignItems={"center"}>
       <Box
-        mx="25 "
-        my="2"
+        mx="10"
+        my="1"
         px="5"
         py="10"
         w={["90vw", "100vw", "40vw"]}
@@ -20,7 +20,7 @@ export default function Index({ Loans }) {
         bg="gray.100"
         h="90vh"
       >
-        <Box display={"inline-block"}>
+        <Box display={"inline-block"} mb={2}>
           <Heading display={"inline"} mr={["100", "300", "470"]}>
             Running
           </Heading>
@@ -35,7 +35,7 @@ export default function Index({ Loans }) {
             New +
           </Button>
         </Box>
-        <VStack h="70vh" spacing={3} overflowY="auto">
+        <VStack h="95%" spacing={3} overflowY="auto">
           {Loans?.map((person) => (
             <LoanBox
               name={person.name}
