@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, GridItem, Heading } from "@chakra-ui/react";
+import { DateTime } from "luxon";
 
 function LoanBox({ name, amount, tenure, phone }) {
   var formatter = new Intl.NumberFormat("en-US", {
@@ -7,7 +8,6 @@ function LoanBox({ name, amount, tenure, phone }) {
     currency: "INR",
   });
 
-  formatter.format(2500);
   return (
     <Grid
       h="25vh"
@@ -28,7 +28,12 @@ function LoanBox({ name, amount, tenure, phone }) {
         </Heading>
       </GridItem>{" "}
       <GridItem rowSpan={2} colSpan={3}>
-        <Heading size={"xs"}>{tenure}</Heading>{" "}
+        <Heading size={"xs"}>
+          {/* {DateTime.fromMillis(Date.now() - tenure * 1000).toRelativeCalendar({
+            numeric: "auto",
+          })} */}
+          {Date(tenure * 1000).toString()}
+        </Heading>{" "}
       </GridItem>{" "}
       <GridItem rowSpan={2} colSpan={3}>
         <Heading size={"xs"}>{phone}</Heading>{" "}

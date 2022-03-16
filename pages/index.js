@@ -37,13 +37,16 @@ export default function Index({ Loans }) {
         </Box>
         <VStack h="95%" spacing={3} overflowY="auto">
           {Loans?.map((person) => (
-            <LoanBox
-              name={person.name}
-              amount={person.amount}
-              tenure={person.createdAt}
-              phone={person.updatedAt}
-              key={person.id}
-            />
+            <>
+              <Box>{Date(person.createdAt)}</Box>
+              <LoanBox
+                name={person.name}
+                amount={person.amount}
+                tenure={person.createdAt}
+                phone={person.updatedAt}
+                key={person.id}
+              />
+            </>
           ))}
         </VStack>
       </Box>
