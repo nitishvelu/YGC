@@ -40,8 +40,8 @@ export default function Index({ Loans }) {
             <LoanBox
               name={person.name}
               amount={person.amount}
-              tenure={person.tenure}
-              phone={person.phone}
+              tenure={person.createdAt}
+              phone={person.updatedAt}
               key={person.id}
             />
           ))}

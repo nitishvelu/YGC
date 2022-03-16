@@ -24,7 +24,7 @@ function LoanBox({ name, amount, tenure, phone }) {
       </GridItem>
       <GridItem rowSpan={2} colSpan={3}>
         <Heading size={"md"} color={"green.400"}>
-          {formatter.format(amount)}
+          {formatter.format(amount).slice(0, -3)}
         </Heading>
       </GridItem>{" "}
       <GridItem rowSpan={2} colSpan={3}>
