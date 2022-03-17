@@ -28,15 +28,10 @@ function LoanBox({ name, amount, tenure, phone }) {
         </Heading>
       </GridItem>{" "}
       <GridItem rowSpan={2} colSpan={3}>
-        <Heading size={"xs"}>
-          {/* {DateTime.fromMillis(Date.now() - tenure * 1000).toRelativeCalendar({
-            numeric: "auto",
-          })} */}
-          {Date(tenure * 1000).toString()}
-        </Heading>{" "}
+        <Heading size={"xs"}>{tenure.toString()}</Heading>{" "}
       </GridItem>{" "}
       <GridItem rowSpan={2} colSpan={3}>
-        <Heading size={"xs"}>{phone}</Heading>{" "}
+        <Heading size={"xs"}>{phone.toString()}</Heading>{" "}
       </GridItem>
     </Grid>
   );

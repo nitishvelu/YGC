@@ -37,16 +37,13 @@ export default function Index({ Loans }) {
         </Box>
         <VStack h="95%" spacing={3} overflowY="auto">
           {Loans?.map((person) => (
-            <>
-              <Box>{Date(person.createdAt)}</Box>
-              <LoanBox
-                name={person.name}
-                amount={person.amount}
-                tenure={person.createdAt}
-                phone={person.updatedAt}
-                key={person.id}
-              />
-            </>
+            <LoanBox
+              name={person.name}
+              amount={person.amount}
+              tenure={person.createdAt}
+              phone={person.updatedAt}
+              key={person.id}
+            />
           ))}
         </VStack>
       </Box>
@@ -54,13 +51,13 @@ export default function Index({ Loans }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const Loans = await prisma.post.findMany();
-  Loans?.map((x) => {
-    x.createdAt = Math.floor(x.createdAt / 1000);
-    x.updatedAt = Math.floor(x.updateddAt / 1000);
-    return x;
-  });
+  // Loans?.map((x) => {
+  //   x.createdAt = Math.floor(x.createdAt / 1000);
+  //   x.updatedAt = Math.floor(x.updateddAt / 1000);
+  //   return x;
+  // });
   return {
     props: { Loans },
   };
