@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, GridItem, Heading, Text } from "@chakra-ui/react";
 import { DateTime } from "luxon";
+import { useRouter } from "next/router";
 
 //converting number to currency format
 function LoanBox({ name, amount, createdate, updatedate }) {
@@ -13,6 +14,8 @@ function LoanBox({ name, amount, createdate, updatedate }) {
   let loanStart = DateTime.fromJSDate(createdate);
   let lastPaid = DateTime.fromJSDate(updatedate);
 
+  const Router = useRouter();
+
   return (
     <Grid
       h="25vh"
@@ -23,6 +26,9 @@ function LoanBox({ name, amount, createdate, updatedate }) {
       rounded="lg"
       bg="white"
       p={3}
+      onClick={() => {
+        Router.push("/loan/[LoanId]", `/loan/${name}`);
+      }}
     >
       <GridItem rowSpan={2} colSpan={4}>
         <Heading size={"xl"}>{name}</Heading>
@@ -33,11 +39,17 @@ function LoanBox({ name, amount, createdate, updatedate }) {
         </Heading>
       </GridItem>
       <GridItem rowSpan={2} colSpan={4}>
-        <Text size={"xs"}>{loanStart.toFormat("MMMM dd")}</Text>
-        <Text size={"xs"}>{formatter.format(amount).slice(0, -3)}</Text>
+        <Text color="gray.500" size={"xs"}>
+          {loanStart.toFormat("MMMM dd")}
+        </Text>
+        <Text color="gray.500" size={"xs"}>
+          {formatter.format(amount).slice(0, -3)}
+        </Text>
       </GridItem>
       <GridItem rowSpan={2} colSpan={2}>
-        <Text size={"xs"}>{lastPaid.toRelative()}</Text>
+        <Text color="gray.500" size={"xs"}>
+          {lastPaid.toRelative()}
+        </Text>
       </GridItem>
     </Grid>
   );
