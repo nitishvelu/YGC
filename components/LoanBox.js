@@ -25,7 +25,7 @@ function LoanBox({ name, amount, tenure, phone }) {
       p={4}
     >
       <GridItem rowSpan={2} colSpan={3}>
-        <Heading size={"lg"}>{name}</Heading>
+        <Heading size={"xl"}>{name}</Heading>
       </GridItem>
       <GridItem rowSpan={2} colSpan={3}>
         <Heading size={"lg"} color={"green.400"}>
@@ -36,7 +36,7 @@ function LoanBox({ name, amount, tenure, phone }) {
         <Text size={"xs"}>{loanStart.toFormat("MMMM dd, yyyy")}</Text>{" "}
       </GridItem>{" "}
       <GridItem rowSpan={2} colSpan={3}>
-        <Text size={"xs"}>{lastPaid.toRelativeCalendar()}</Text>{" "}
+        <Text size={"xs"}>{lastPaid.toRelative()}</Text>{" "}
       </GridItem>
     </Grid>
   );
