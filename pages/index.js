@@ -13,7 +13,7 @@ export default function Index({ Loans }) {
         my="1"
         px="5"
         py="10"
-        w={["90vw", "100vw", "40vw"]}
+        w={["90vw", "80vw", "40vw"]}
         rounded="lg"
         shadow={"lg"}
         justifyContent={"center"}
@@ -21,7 +21,7 @@ export default function Index({ Loans }) {
         h="90vh"
       >
         <Box display={"inline-block"} mb={2}>
-          <Heading display={"inline"} mr={["100", "300", "470"]}>
+          <Heading display={"inline"} mr={["90", "300", "470"]}>
             Running
           </Heading>
           <Button
