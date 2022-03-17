@@ -1,16 +1,20 @@
 import React from "react";
-import prisma from "../prisma";
+import prisma from "../../prisma";
 
-function LoanDetails() {
-  return <div>les gooo it works</div>;
+function LoanDetails({ user }) {
+  return <div>{user.name}</div>;
 }
 
 export default LoanDetails;
 
-export async function getServerSideProps() {
-  const Loans = await prisma.post.findMany();
-
+export async function getServerSideProps(context) {
+  let { params } = context;
+  const user = await prisma.post.findUnique({
+    where: {
+      id: params.LoanId,
+    },
+  });
   return {
-    props: { Loans },
+    props: { user },
   };
 }
