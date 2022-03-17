@@ -12,8 +12,6 @@ function LoanBox({ name, amount, tenure, phone }) {
   //handling date objects using luxon
   let loanStart = DateTime.fromJSDate(tenure);
   let lastPaid = DateTime.fromJSDate(phone);
-  let now = DateTime.local();
-  const diff = now.diff(lastPaid, ["years", "months", "days", "hours"]);
 
   return (
     <Grid
