@@ -3,15 +3,15 @@ import { Grid, GridItem, Heading, Text } from "@chakra-ui/react";
 import { DateTime } from "luxon";
 
 //converting number to currency format
-function LoanBox({ name, amount, createdAt, updatedAt }) {
+function LoanBox({ name, amount, createdate, updatedate }) {
   var formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "INR",
   });
 
   //handling date objects using luxon
-  let loanStart = DateTime.fromJSDate(createdAt);
-  let lastPaid = DateTime.fromJSDate(updatedAt);
+  let loanStart = DateTime.fromJSDate(createdate);
+  let lastPaid = DateTime.fromJSDate(updatedate);
 
   return (
     <Grid
