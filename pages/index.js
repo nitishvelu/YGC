@@ -43,6 +43,8 @@ export default function Index({ Loans }) {
               createdate={person.createdAt}
               updatedate={person.updatedAt}
               key={person.id}
+              id={person.id}
+              paid={person.paid}
             />
           ))}
         </VStack>

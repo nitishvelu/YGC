@@ -4,11 +4,12 @@ import { DateTime } from "luxon";
 import { useRouter } from "next/router";
 
 //converting number to currency format
-function LoanBox({ name, amount, createdate, updatedate }) {
+function LoanBox({ name, amount, createdate, updatedate, id, paid }) {
   var formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "INR",
   });
+  let yetToPay = amount - paid;
 
   //handling date objects using luxon
   let loanStart = DateTime.fromJSDate(createdate);
@@ -27,7 +28,7 @@ function LoanBox({ name, amount, createdate, updatedate }) {
       bg="white"
       p={3}
       onClick={() => {
-        Router.push("/loan/[LoanId]", `/loan/${name}`);
+        Router.push("/loan/[LoanId]", `/loan/${id}`);
       }}
     >
       <GridItem rowSpan={2} colSpan={4}>
@@ -43,7 +44,7 @@ function LoanBox({ name, amount, createdate, updatedate }) {
           {loanStart.toFormat("MMMM dd")}
         </Text>
         <Text color="gray.500" size={"xs"}>
-          {formatter.format(amount).slice(0, -3)}
+          {formatter.format(yetToPay).slice(0, -3)}
         </Text>
       </GridItem>
       <GridItem rowSpan={2} colSpan={2}>
