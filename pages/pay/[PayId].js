@@ -15,7 +15,7 @@ import {
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-export const PostSchema = Yup.object().shape({
+export const PaySchema = Yup.object().shape({
   amount: Yup.number().required("* Required"),
 });
 
@@ -26,7 +26,7 @@ function Pay() {
   const formik = useFormik({
     initialValues: { amount: "" },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
-      const data = await fetch(`/api/auth/pay/${PayId}`, {
+      const data = await fetch(`/api/pay/${PayId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,7 +41,7 @@ function Pay() {
         router.push("/");
       }
     },
-    validationSchema: PostSchema,
+    validationSchema: PaySchema,
     validateOnBlur: true,
   });
 

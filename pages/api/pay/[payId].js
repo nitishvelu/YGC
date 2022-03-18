@@ -1,11 +1,12 @@
 import { getSession } from "next-auth/client";
-import prisma from "../../../../prisma";
+import prisma from "../../../prisma";
+import { PaySchema } from "../../pay/[PayId].js";
 
 // import { PostSchema } from "../../components/PostForm";
 
 async function pay(req, res) {
   const session = await getSession({ req });
-  const { postid } = req.query;
+  const { payId } = await req.query;
 
   if (!session) {
     return res.status(401).json({ unauthorized: true });
@@ -19,14 +20,14 @@ async function pay(req, res) {
   //   where: { id: sessionRecord.userId },
   // });
 
-  //   const valid = await PostSchema.isValid(req.body);
+  const valid = await PaySchema.isValid(req.body);
 
-  //   if (!valid) {
-  //     return res.status(500).json({ error: "validation error" });
-  //   }
-  const pay = await prisma.pay.create({
+  if (!valid) {
+    return res.status(500).json({ error: "validation error" });
+  }
+  const pay = await prisma.payment.create({
     data: {
-      postId: postid,
+      postId: payId,
       amount: Number(req.body.amount),
     },
   });
