@@ -31,6 +31,17 @@ async function pay(req, res) {
       amount: Number(req.body.amount),
     },
   });
+  //update post paid amount
+  await prisma.post.update({
+    where: {
+      id: payId,
+    },
+    data: {
+      paid: {
+        increment: Number(req.body.amount),
+      },
+    },
+  });
 
   if (pay.id) {
     res.status(200).json(pay);
