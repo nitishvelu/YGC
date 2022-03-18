@@ -23,13 +23,10 @@ async function pay(req, res) {
   //   if (!valid) {
   //     return res.status(500).json({ error: "validation error" });
   //   }
-  const post = await prisma.post.create({
+  const post = await prisma.pay.create({
     data: {
-      userId: user.id,
-      name: req.body.name,
-      tenure: Number(req.body.tenure),
+      postId: user.id,
       amount: Number(req.body.amount),
-      phone: req.body.phone,
     },
   });
 
