@@ -9,7 +9,9 @@ function LoanDetails({ user }) {
     <>
       <div>{user.name}</div>
       <Button
-        onClick={() => router.push("/loan")}
+        onClick={() => {
+          router.push("/pay/[payId]", `/pay/${user.id}`);
+        }}
         color="white"
         bg="green.300"
         colorScheme="green"
