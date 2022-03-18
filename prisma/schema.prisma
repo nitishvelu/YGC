@@ -74,4 +74,13 @@ model Post {
   user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  Payment   Payment[]
+}
+
+model Payment {
+  id         String   @id @default(cuid())
+  postId     String
+  post       Post     @relation(fields: [postId], references: [id])
+  amount     Int
+  createdAt  DateTime @default(now())
 }
