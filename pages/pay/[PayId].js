@@ -19,7 +19,7 @@ export const PaySchema = Yup.object().shape({
   amount: Yup.number().required("* Required"),
 });
 
-function Pay() {
+export default function Pay() {
   const router = useRouter();
   const { PayId } = router.query;
 
@@ -71,7 +71,7 @@ function Pay() {
               </FormErrorMessage>
             </Box>
             <InputGroup>
-              <InputLeftAddon children="₹" />
+              <InputLeftAddon>₹</InputLeftAddon>
               <Input
                 onBlur={formik.handleBlur}
                 value={formik.values.amount}
@@ -100,5 +100,3 @@ function Pay() {
     </Flex>
   );
 }
-
-export default Pay;

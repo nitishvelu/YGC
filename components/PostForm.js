@@ -95,7 +95,7 @@ export default function PostForm() {
               </FormErrorMessage>
             </Box>
             <InputGroup>
-              <InputLeftAddon children="+91" />
+              <InputLeftAddon>+91</InputLeftAddon>
               <Input
                 onBlur={formik.handleBlur}
                 value={formik.values.phone}
@@ -139,7 +139,7 @@ export default function PostForm() {
               </FormErrorMessage>
             </Box>
             <InputGroup>
-              <InputLeftAddon children="₹" />
+              <InputLeftAddon> ₹</InputLeftAddon>
               <Input
                 onBlur={formik.handleBlur}
                 value={formik.values.amount}
