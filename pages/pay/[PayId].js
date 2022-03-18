@@ -1,7 +1,11 @@
 import React from "react";
+import { useRouter } from "next/router";
 
-function pay() {
-  return <div>guruuu</div>;
+function Pay() {
+  const router = useRouter();
+  const { PayId } = router.query;
+
+  return <div>{PayId}</div>;
 }
 
-export default pay;
+export default Pay;
