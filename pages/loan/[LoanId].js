@@ -3,8 +3,10 @@ import prisma from "../../prisma";
 import { Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
-function LoanDetails({ user }) {
+function LoanDetails({ user, transactions }) {
   const router = useRouter();
+  console.log(transactions);
+  console.log(user);
   return (
     <>
       <div>{user.name}</div>
@@ -33,7 +35,12 @@ export async function getServerSideProps(context) {
       id: params.LoanId,
     },
   });
+  const transactions = await prisma.payment.findMany({
+    where: {
+      postId: params.LoanId,
+    },
+  });
   return {
-    props: { user },
+    props: { user, transactions },
   };
 }

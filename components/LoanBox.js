@@ -36,7 +36,7 @@ function LoanBox({ name, amount, createdate, updatedate, id, paid }) {
       </GridItem>
       <GridItem rowSpan={2} colSpan={2}>
         <Heading size={"lg"} color={"green.400"}>
-          {formatter.format(amount).slice(0, -3)}
+          {formatter.format(yetToPay).slice(0, -3)}
         </Heading>
       </GridItem>
       <GridItem rowSpan={2} colSpan={4}>
@@ -44,7 +44,7 @@ function LoanBox({ name, amount, createdate, updatedate, id, paid }) {
           {loanStart.toFormat("MMMM dd")}
         </Text>
         <Text color="gray.500" size={"xs"}>
-          {formatter.format(yetToPay).slice(0, -3)}
+          {formatter.format(amount).slice(0, -3)}
         </Text>
       </GridItem>
       <GridItem rowSpan={2} colSpan={2}>
