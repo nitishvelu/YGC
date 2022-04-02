@@ -1,7 +1,16 @@
 import React from "react";
 import prisma from "../../prisma";
-import { Button, Flex, Box, Heading, VStack } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  Box,
+  Text,
+  Heading,
+  VStack,
+  Divider,
+} from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { DateTime } from "luxon";
 
 function LoanDetails({ user, transactions }) {
   const router = useRouter();
@@ -40,7 +49,18 @@ function LoanDetails({ user, transactions }) {
         </Box>
         <VStack h="95%" spacing={3} overflowY="auto">
           {transactions?.map((transaction) => (
-            <Heading key={transaction.id}>{transaction.amount}</Heading>
+            <Box key={transaction.id} display="inline-block">
+              <Text color="gray.500" display="inline" size={"xs"}>
+                {DateTime.fromJSDate(transaction.createdAt).toFormat(
+                  "dd MMMM , yyyy"
+                )}
+              </Text>
+              {"        :        "}
+              <Text color="gray.500" display="inline" size={"xs"}>
+                {transaction.amount}
+              </Text>
+              <Divider color="pink" orientation="horizontal" />
+            </Box>
           ))}
           ;
         </VStack>
