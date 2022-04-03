@@ -55,7 +55,7 @@ function LoanDetails({ user, transactions }) {
                   "dd MMMM , yyyy"
                 )}
               </Text>
-              {"        :        "}
+              {"            :            "}
               <Text color="green.500" display="inline" size={"md"}>
                 {"₹" + transaction.amount + "   "}
               </Text>
