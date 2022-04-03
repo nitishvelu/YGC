@@ -12,13 +12,13 @@ async function pay(req, res) {
     return res.status(401).json({ unauthorized: true });
   }
 
-  // const sessionRecord = await prisma.session.findUnique({
-  //   where: { accessToken: session.accessToken },
-  // });
+  const sessionRecord = await prisma.session.findUnique({
+    where: { accessToken: session.accessToken },
+  });
 
-  // const user = await prisma.user.findUnique({
-  //   where: { id: sessionRecord.userId },
-  // });
+  const user = await prisma.user.findUnique({
+    where: { id: sessionRecord.userId },
+  });
 
   const valid = await PaySchema.isValid(req.body);
 
@@ -28,6 +28,7 @@ async function pay(req, res) {
   const pay = await prisma.payment.create({
     data: {
       postId: payId,
+      reciever: user.name,
       amount: Number(req.body.amount),
     },
   });

@@ -81,6 +81,7 @@ model Payment {
   id         String   @id @default(cuid())
   postId     String
   post       Post     @relation(fields: [postId], references: [id])
+  reciever   String
   amount     Int
   createdAt  DateTime @default(now())
 }
