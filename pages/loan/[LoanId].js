@@ -56,8 +56,11 @@ function LoanDetails({ user, transactions }) {
                 )}
               </Text>
               {"        :        "}
+              <Text color="green.500" display="inline" size={"md"}>
+                {"₹" + transaction.amount + "   "}
+              </Text>
               <Text color="gray.500" display="inline" size={"xs"}>
-                {transaction.amount}
+                {"    " + transaction.reciever}
               </Text>
               <Divider color="pink" orientation="horizontal" />
             </Box>

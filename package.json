@@ -13,7 +13,7 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@next-auth/prisma-adapter": "^0.4.4-canary.64",
-    "@prisma/client": "^2.30.3",
+    "@prisma/client": "^3.11.1",
     "babel-plugin-superjson-next": "^0.4.3",
     "formik": "^2.2.9",
     "framer-motion": "^4",
@@ -32,6 +32,6 @@
     "eslint": "^7.32.0",
     "eslint-config-next": "11.0.0",
     "prettier": "2.5.1",
-    "prisma": "^2.25.0"
+    "prisma": "^3.11.1"
   }
 }
